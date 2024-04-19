@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+import ContentSection from "~/components/content-section.astro";
+import type { FeatureItem } from "~/types";
+
+const features: Array<FeatureItem> = [
+  {
+    title: "$35 PP | Roatan Tour",
+    description:
+      "This tour option is a good choice, you can customize it to your liking. Our visit includes a chocolate factory, a rum company, and the Roatan letters for photo opportunities.",
+    buttonLabel: "Book Now",
+    buttonUrl: "booking",
+    imageUrl: "../../src/assets/cuatrimoto.jpg",
+    
+  },
+  {
+    title: "$45 PP | Sanctuary Tour",
+    description:
+      "Transportation, Visit the sanctuary of sloths, monkeys and macaws, taste of chocolate, rum cake samples photos opportunities.",
+    buttonLabel: "Book Now",
+    buttonUrl: "booking",
+    imageUrl: "../../src/assets/sanctuary.jpeg",
+  },
+  {
+    title: "$55 PP | Beach Tour",
+    description:
+      "The tour package comes with an island tour, an animal park that has monkeys and sloths, and a day pass for the beach, along with beach chairs and an umbrella.",
+    buttonLabel: "Book Now",
+    buttonUrl: "booking",
+    imageUrl: "../../src/assets/beach.jpeg",
+  },
+  {
+    title: "$60 PP | Snorkeling Tour",
+    description:
+      "Boat Snorkeling at the coral reef barrier, Chocolate samples, rum cake samples, Roatan sign for photos and picking you up and drop off. Duration 3 - 5 hours.",
+    buttonLabel: "Book Now",
+    buttonUrl: "booking",
+    imageUrl: "../../src/assets/snorkeling.jpeg",
+  },
+  {
+    title: "$65 PP | Zipline Tour",
+    description:
+      "Zip-Line adventure, Visit the sanctuary of sloths, monkeys and macaws, taste of chocolate, rum cake samples, and photos oportunity . Duration 3 - 4 hours.",
+    buttonLabel: "Book Now",
+    buttonUrl: "booking",
+    imageUrl: "../../src/assets/zipline.jpeg",
+  },
+  {
+    title: "$95 PP | Parasailing Tour",
+    description:
+      "Include Transportation Chocolate Factory tasting the Rum cake boat parasailing, beach break, Roatan letters for photos. Duration 4 - 5 hours.",
+    buttonLabel: "Book Now",
+    buttonUrl: "booking",
+    imageUrl: "../../src/assets/parasailing.jpeg",
+  },
+];
+---
+
+<ContentSection title="Discover Our Tours" id="tours">
+  <Fragment slot="lead">
+    <span class="text-primary">Explore</span> a wide range of carefully curated
+    <span class="text-primary">tours</span>
+    to suit your needs and <span class="text-primary">desires</span>.
+  </Fragment>
+  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    {
+      features.map(({ title, description, buttonLabel, buttonUrl, imageUrl}) => (
+        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
+          <img src={imageUrl} alt={title} class="max-w-full h-auto rounded-lg" /> {/* Imagen agregada aquí */}
+          <p class="text-center font-extrabold text-l">{title}</p>
+          <p class="text-center text-offset text-sm">{description}</p>
+          <a href={buttonUrl} class="mt-4 px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-indigo-700">
+        {buttonLabel}
+      </a>
+
+        </li>
+      ))
+    }
+  </ul>
+</ContentSection>

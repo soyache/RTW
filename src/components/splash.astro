@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import PlayaImg from "~/assets/playa.webp";
+import Option8Img from "../../src/assets/Opcion8.webp";
+import SplashImgMob from "~/assets/splashMobile.png";
+import GitHubCorner from "./github-corner.astro";
+
+
+const widths = [450, 800];
+const sizes = "(min-width: 640px) 42vw, 67vw";
+---
+
+<section class="relative h-full bg-black" style="background-image: url(../../src/assets/playa.webp); background-size: cover;">
+  <GitHubCorner />
+  <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
+  </div>
+  <div id = "imagenSp" class="absolute inset-0 sm:right-0">
+    <Image 
+      src={SplashImgMob} 
+      class="w-full h-full object-contain sm:object-right" 
+      alt="Splash Image"
+    />
+  </div>
+  <div class="relative grid h-full place-items-center sm:grid-cols-2">
+    <h2
+      class="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end z-10"
+    >
+      <!-- <Icon name="logomark" class="size-24 text-black md:size-32" /> -->
+      <Image src={Option8Img} class="size-24 md:size-48" alt="Option 8 Image" />
+      
+      <div id = "textoSp"
+        class="gradient-text text-center font-extrabold tracking-tighter text-6xl md:text-8xl mb-12 md:mb-0"
+      >
+      Get ready for a
+        <br />Wonderful
+        <br /> experience.
+      </div>
+    </h2>
+  </div>
+</section>
+
+<noscript>
+  <style>
+    #splash-bg-fallback {
+      display: block;
+    }
+  </style>
+</noscript>
+
+<style>
+
+    #splash-bg-fallback {
+      @apply block;
+    }
+
+    /* #textoSp {
+      
+      background: linear-gradient(90deg, #3700ff 0%, #258bf8 50%, #00aaff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+    
+    } */
+</style>

@@ -1,0 +1,86 @@
+---
+// No hay importaciones o scripts frontmatter necesarios para este ejemplo
+---
+
+<html>
+<head>
+    <title>Booking Form</title>
+    <link rel="stylesheet" href="/src/styles/theme.css">
+
+    <!-- Asegúrate de incluir cualquier CSS global o específico del formulario aquí -->
+</head>
+<body>
+    <form action="https://script.google.com/macros/s/AKfycbysuPXhjS_cVHj7ay8vCMldMXPTDaisZWuR2J6V1VwUHW3ibXXkd1INIJ7Zi1dLNo6OJA/exec" method="POST" name="bookingForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="arrival-date">Roatan Arrival Date:</label>
+        <input type="date" id="arrival-date" name="arrivalDate" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="cruise-ship">Cruise Ship:</label>
+        <input type="text" id="cruise-ship" name="cruiseShip" required>
+
+        <label for="adults">The number of adults from 18+ years:</label>
+        <input type="number" id="adults" name="adults" min="1" required>
+
+        <label for="children1-3">The number of children ages 1 to 3 years:</label>
+        <input type="number" id="children1-3" name="children1to3" min="0">
+
+        <label for="children4-10">The number of children ages 4 to 10 years:</label>
+        <input type="number" id="children4-10" name="children4to10" min="0">
+
+        <label for="children11-17">The number of children ages 11 to 17 years:</label>
+        <input type="number" id="children11-17" name="children11to17" min="0">
+
+        <label for="tour-package">Pick a tour package from the list:</label>
+        <select id="tour-package" name="tourPackage" required>
+            <option value="package1">Package 1</option>
+            <option value="package2">Package 2</option>
+            <!-- Agrega más opciones según los paquetes disponibles -->
+        </select>
+
+        <label for="message">Send a message:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="./form-handler.js" type="module"></script>
+
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            color: var(--color-text); /* Usa la variable de color del texto según el tema */
+            background-color: rgba(128, 128, 128, 0.163); /* Fondo según el tema */
+            border-color: var(--color-border); /* Color del borde según el tema */
+
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0044cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #003399;
+        }
+    </style>
+</body>
+</html>
