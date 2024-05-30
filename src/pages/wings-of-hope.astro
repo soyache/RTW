@@ -1,0 +1,79 @@
+---
+import "@fontsource-variable/inter";
+import Footer from "~/components/footer.astro";
+import HeaderPage from "~/components/header-page.astro";
+import BookingForm from "../components/booking-form.astro";
+import "~/styles/index.css";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Roatan Wonderful Tour is a tour operator company based on the beautiful island of Roatan. We offer a variety of tour packages that allow you to experience the best of what our island has to offer.";
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>Wings of Hope</title>
+    <meta name="description" content={description} />
+
+    <!-- social media -->
+    <meta property="og:title" content="Astro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <HeaderPage />
+    <div class="space-y-24 px-8 py-32">
+      <div class="max-w-xl mx-auto text-center">
+        <h1 style="font-size: 2em; font-weight: bold;">Wings of Hope: Transforming Lives in Roatán</h1>
+        <img src="/wings-of-hope.jpeg" alt="Wings of Hope" class="w-full rounded-lg" />
+        <p style="font-size: 1em;">
+          <br />
+          Wings of Hope is an NGO dedicated to providing support and hope to street children in Roatán, Bay Islands, Honduras. With a mission focused on education and comprehensive development, this organization works tirelessly to improve the living conditions of the region's most vulnerable youth.<br /><br />
+ 
+          The main initiative of Wings of Hope is the sponsorship of children, providing them not only with a safe home but also access to quality education. Through educational scholarships, the NGO enables these children to attend school, covering the costs of tuition, uniforms, school supplies, and other related expenses. This support is crucial to breaking the cycle of poverty and offering them a more promising future.<br /><br />
+          
+          In addition to scholarships, Wings of Hope offers tutoring and mentoring programs, ensuring that children receive not only formal education but also the emotional and psychological support necessary for their overall development. The organization also promotes extracurricular activities and personal development programs, fostering social skills and positive values.<br /><br />
+          
+          Thanks to Wings of Hope, many children in Roatán are finding a new opportunity to build a better future, demonstrating that with dedication and community support, it is possible to transform lives and create a lasting impact on society.</p>
+        <a href="https://www.facebook.com/profile.php?id=61558601637253" class="inline-block mt-4 px-6 py-2 text-white bg-blue-500 rounded">Visit Wings of Hope</a>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>
