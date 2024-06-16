@@ -12,6 +12,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     fetch(scriptURL, {
       method: "POST",
       body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
     })
       .then((response) => response.json())
       .then((data) => {
