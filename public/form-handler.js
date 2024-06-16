@@ -9,14 +9,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
     submitButton.disabled = true; // Deshabilita el botón
     submitButton.textContent = "Loading..."; // Cambia el texto del botón
 
-    fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // Añade esta línea para convertir la respuesta en JSON
-      })
+    fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
       .then((data) => {
+        console.log(data); // Agrega esto para depuración
         if (data.result === "success") {
           // Solo redirige si la respuesta fue exitosa
           window.location.href = "/booking-confirmation";
@@ -29,6 +31,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         submitButton.textContent = "Submit"; // Restaura el texto del botón
       })
       .catch((error) => {
+        console.error(error); // Agrega esto para depuración
         // Muestra un mensaje de error al usuario
         alert("There was an error submitting the form. Please try again.");
         submitButton.disabled = false; // En caso de error, rehabilita el botón
