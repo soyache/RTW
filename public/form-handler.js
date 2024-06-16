@@ -10,16 +10,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     submitButton.textContent = "Loading..."; // Cambia el texto del botón
 
     fetch(scriptURL, { method: "POST", body: new FormData(form) })
-      .then((response) => response.json()) // Añade esta línea para convertir la respuesta en JSON
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json(); // Añade esta línea para convertir la respuesta en JSON
+      })
       .then((data) => {
         if (data.result === "success") {
           // Solo redirige si la respuesta fue exitosa
           window.location.href = "/booking-confirmation";
         } else {
           // Muestra un mensaje de error al usuario
-          alert(
-            "Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.",
-          );
+          alert("There was an error submitting the form. Please try again.");
         }
         form.reset(); // Reinicia el formulario
         submitButton.disabled = false; // Rehabilita el botón
@@ -27,9 +30,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       })
       .catch((error) => {
         // Muestra un mensaje de error al usuario
-        alert(
-          "Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.",
-        );
+        alert("There was an error submitting the form. Please try again.");
         submitButton.disabled = false; // En caso de error, rehabilita el botón
         submitButton.textContent = "Submit"; // Restaura el texto del botón
       });
