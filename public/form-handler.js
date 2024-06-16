@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     "https://script.google.com/macros/s/AKfycbysuPXhjS_cVHj7ay8vCMldMXPTDaisZWuR2J6V1VwUHW3ibXXkd1INIJ7Zi1dLNo6OJA/exec";
   const form = document.forms["bookingForm"];
   const submitButton = form.querySelector('button[type="submit"]');
-  const errorMessage = document.getElementById("error-message"); // Asegúrate de tener un elemento con id 'error-message' en tu HTML
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -19,8 +18,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         submitButton.textContent = "Submit"; // Restaura el texto del botón
       })
       .catch((error) => {
-        errorMessage.textContent =
-          "There was an error submitting the form. Please try again."; // Muestra el mensaje de error al usuario
+        // Muestra un mensaje de error al usuario
+        alert(
+          "Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.",
+        );
         submitButton.disabled = false; // En caso de error, rehabilita el botón
         submitButton.textContent = "Submit"; // Restaura el texto del botón
       });
