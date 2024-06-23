@@ -1,9 +1,16 @@
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
+import dotenv from "dotenv";
 
-// https://astro.build/config
+dotenv.config();
+
 export default defineConfig({
-  site: "https://roatanwonderfultours.com",
+  site: "https://roatanwonderful.com",
   integrations: [tailwind(), icon()],
+  vite: {
+    define: {
+      "import.meta.env.SCRIPT_URL": JSON.stringify(process.env.SCRIPT_URL),
+    },
+  },
 });
