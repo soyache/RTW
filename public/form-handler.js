@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  const scriptURL = import.meta.env.SCRIPT_URL;
-  console.log("Script URL:", scriptURL); // Añadir log para depuración
+  const scriptURL = process.env.SCRIPT_URL;
+  // "https://script.google.com/macros/s/AKfycbysuPXhjS_cVHj7ay8vCMldMXPTDaisZWuR2J6V1VwUHW3ibXXkd1INIJ7Zi1dLNo6OJA/exec";
   const form = document.getElementById("bookingForm");
   const submitButton = form.querySelector('button[type="submit"]');
 
@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Response data:", data); // Añadir log para depuración
+        console.log(data);
         if (data.result === "success") {
           window.location.href = "/booking-confirmation";
         } else {
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         submitButton.textContent = "Submit";
       })
       .catch((error) => {
-        console.error("Error:", error); // Añadir log para depuración
+        console.error(error);
         alert("There was an error submitting the form. Please try again.");
         submitButton.disabled = false;
         submitButton.textContent = "Submit";
