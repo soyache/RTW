@@ -1,13 +1,14 @@
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("form-handler.js loaded"); // Log para verificar que el script se carga
 
-  const scriptURL = import.meta.env.SCRIPT_URL;
+  const form = document.getElementById("bookingForm");
+  const scriptURL = form.getAttribute("data-script-url");
   console.log("Script URL:", scriptURL); // Añadir log para depuración
   if (!scriptURL) {
     console.error("SCRIPT_URL is not defined");
+    return;
   }
 
-  const form = document.getElementById("bookingForm");
   const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", (e) => {
