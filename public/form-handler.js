@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  const scriptURL = process.env.SCRIPT_URL;
-  // "https://script.google.com/macros/s/AKfycbysuPXhjS_cVHj7ay8vCMldMXPTDaisZWuR2J6V1VwUHW3ibXXkd1INIJ7Zi1dLNo6OJA/exec";
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbysuPXhjS_cVHj7ay8vCMldMXPTDaisZWuR2J6V1VwUHW3ibXXkd1INIJ7Zi1dLNo6OJA/exec";
+  // process.env.SCRIPT_URL;
   const form = document.getElementById("bookingForm");
   const submitButton = form.querySelector('button[type="submit"]');
 
