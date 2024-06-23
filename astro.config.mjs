@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default defineConfig({
-  site: "https://www.roatanwonderful.com",
+  site: "https://roatanwonderful.com",
   integrations: [tailwind(), icon()],
   vite: {
     define: {
