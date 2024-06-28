@@ -8,7 +8,7 @@ import "~/styles/index.css";
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
-  "Roatan Wonderful is a tour operator company based on the beautiful island of Roatan. We offer a variety of tour packages that allow you to experience the best of what our island has to offer.";
+  "Roatan Wonderful Tour is a tour operator company based on the beautiful island of Roatan. We offer a variety of tour packages that allow you to experience the best of what our island has to offer.";
 ---
 
 <!doctype html>
@@ -33,7 +33,7 @@ const description =
     <!-- initialize theme -->
     <script is:inline>
       const themeSaved = localStorage.getItem("theme");
-
+    
       if (themeSaved) {
         document.documentElement.dataset.theme = themeSaved;
       } else {
@@ -42,7 +42,7 @@ const description =
         ).matches;
         document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
       }
-
+    
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (event) => {
