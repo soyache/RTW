@@ -8,5 +8,5 @@ a,
 
 .gradient-text {
   @apply bg-clip-text text-transparent;
-  @apply bg-gradient-to-br from-indigo-500 via-blue-950 to-indigo-400;
+  @apply bg-gradient-to-br from-teal-700 via-blue-500 to-blue-600;
 }
