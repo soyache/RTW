@@ -1,0 +1,147 @@
+---
+import "@fontsource-variable/inter";
+import Footer from "~/components/footer.astro";
+import HeaderPage from "~/components/header-page.astro";
+import "~/styles/index.css";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Frequently Asked Questions about our Roatán tours including sloth sanctuary visits, jet skiing, canopy tours, ATV adventures, and mangrove tunnel experiences.";
+
+const faqs = [
+  {
+    question: "What tours do you offer in Roatán?",
+    answer: "We offer a variety of exciting tours in Roatán, including visits to sloth sanctuaries, jet ski adventures, canopy tours, ATV rides, and mangrove tunnel experiences. Each tour is designed to showcase the best of Roatán's natural beauty and adventure opportunities."
+  },
+  {
+    question: "Are your tours suitable for all ages?",
+    answer: "Most of our tours are family-friendly and suitable for various age groups. However, some activities like jet skiing and ATV rides may have age restrictions. We recommend checking the specific tour details or contacting us for more information about age suitability."
+  },
+  {
+    question: "How long do the tours typically last?",
+    answer: "Tour durations vary depending on the activity. Sloth sanctuary visits and canopy tours usually take 2-3 hours, while jet ski and ATV adventures can range from 1-4 hours. The mangrove tunnel experience is typically a half-day tour. Please check individual tour descriptions for exact durations."
+  },
+  {
+    question: "Do I need to book in advance?",
+    answer: "We highly recommend booking in advance, especially during peak tourist seasons. This ensures availability and allows us to prepare for your tour. However, we do accept last-minute bookings when possible."
+  },
+  {
+    question: "What should I bring on the tours?",
+    answer: "For most tours, we recommend bringing sunscreen, insect repellent, comfortable clothing, and closed-toe shoes. For water activities, bring a swimsuit and towel. Specific tour requirements will be provided upon booking."
+  },
+  {
+    question: "Are your tours eco-friendly?",
+    answer: "Yes, we are committed to sustainable tourism. Our sloth sanctuary visits and mangrove tunnel tours are designed to minimize environmental impact. We also follow best practices for our motorized tours to protect Roatán's natural beauty."
+  },
+  {
+    question: "Can you accommodate large groups or private tours?",
+    answer: "Absolutely! We can arrange private tours and accommodate large groups. Please contact us in advance for custom tour options and group rates."
+  },
+  {
+    question: "What is your cancellation policy?",
+    answer: "We offer full refunds for cancellations made at least 48 hours before the scheduled tour. Cancellations within 48 hours may be subject to a partial refund. In case of unexpected weather conditions, we will work with you to reschedule or provide a full refund."
+  }
+];
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>FAQ - Roatán Tour Packages</title>
+    <meta name="description" content={description} />
+
+    <!-- social media -->
+    <meta property="og:title" content="FAQ - Roatán Tour Packages" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <HeaderPage />
+    <div class="space-y-24 px-8 py-32">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h1>
+        
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="border border-gray-200 rounded-lg">
+              <button
+                class="flex justify-between items-center w-full px-4 py-2 text-lg font-medium text-left focus:outline-none focus-visible:ring focus-visible:ring-opacity-75"
+                id={`faq-button-${index}`}
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span>{faq.question}</span>
+                <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div
+                id={`faq-answer-${index}`}
+                class="px-4 pt-0 pb-2 text-sm hidden"
+              >
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <Footer />
+
+    <script>
+        document.querySelectorAll('button[id^="faq-button-"]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const answerId = button.getAttribute('aria-controls');
+            if (answerId) {
+              const answerElement = document.getElementById(answerId);
+              if (answerElement) {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                
+                button.setAttribute('aria-expanded', (!isExpanded).toString());
+                answerElement.classList.toggle('hidden');
+                const svg = button.querySelector('svg');
+                if (svg) {
+                  svg.classList.toggle('rotate-180');
+                }
+              }
+            }
+          });
+        });
+      </script>
+  </body>
+</html>

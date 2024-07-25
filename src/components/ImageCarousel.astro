@@ -1,0 +1,97 @@
+---
+// ImageCarousel.astro
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+interface CarouselImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: CarouselImage[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="swiper-container w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden relative">
+  <div class="swiper-wrapper">
+    {images.map((image) => (
+      <div class="swiper-slide">
+        <img src={image.src} alt={image.alt} class="w-full h-full object-cover" />
+      </div>
+    ))}
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<style>
+  :root {
+    --swiper-theme-color: #007aff;
+    --swiper-navigation-size: 44px;
+  }
+
+  .swiper-container {
+    position: relative;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    width: var(--swiper-navigation-size);
+    height: var(--swiper-navigation-size);
+    margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--swiper-theme-color);
+  }
+
+  .swiper-button-prev {
+    left: 10px;
+    right: auto;
+  }
+
+  .swiper-button-next {
+    right: 10px;
+    left: auto;
+  }
+
+  @media (max-width: 640px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      --swiper-navigation-size: 30px;
+    }
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+  
+  new Swiper('.swiper-container', {
+    modules: [Navigation, Pagination, Autoplay],
+    spaceBetween: 30,
+    slidesPerView: 1,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+  });
+</script>

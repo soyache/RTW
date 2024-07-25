@@ -1,0 +1,114 @@
+---
+import "@fontsource-variable/inter";
+import Footer from "~/components/footer.astro";
+import HeaderPage from "~/components/header-page.astro";
+import "~/styles/index.css";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Legal notice and terms of use for Roatán Wonderful Tour's website.";
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>Legal Notice - Roatán Wonderful Tour</title>
+    <meta name="description" content={description} />
+
+    <!-- social media -->
+    <meta property="og:title" content="Legal Notice - Roatán Wonderful Tour" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <HeaderPage />
+    <div class="space-y-24 px-8 py-32">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-12">Legal Notice</h1>
+        
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">1. Company Information</h2>
+          <p>Roatán Wonderful Tour is a tour operator company based in Roatán, Bay Islands, Honduras. [Insert your company's full legal name, registration number, and registered address here]</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">2. Terms of Use</h2>
+          <p>By accessing and using this website, you agree to comply with and be bound by the following terms and conditions. If you disagree with any part of these terms, please do not use our website.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">3. Intellectual Property</h2>
+          <p>The content, design, and all materials on this website are protected by copyright and other intellectual property rights. You may not reproduce, distribute, or use any content from this website without our express written permission.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">4. Privacy Policy</h2>
+          <p>We are committed to protecting your privacy. Any personal information collected through this website will be used in accordance with our Privacy Policy. [Link to your Privacy Policy page]</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">5. Disclaimer</h2>
+          <p>While we strive to provide accurate and up-to-date information on this website, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">6. Limitation of Liability</h2>
+          <p>Roatán Wonderful Tour shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to, or use of, the website. Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">7. Governing Law</h2>
+          <p>These terms and conditions are governed by and construed in accordance with the laws of Honduras. Any disputes relating to these terms and conditions shall be subject to the exclusive jurisdiction of the courts of Honduras.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">8. Changes to Legal Notice</h2>
+          <p>We reserve the right to modify this legal notice at any time. Changes will be effective immediately upon posting to the website. Your continued use of the site after any changes indicates your acceptance of the modified terms.</p>
+        </section>
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">9. Contact Information</h2>
+          <p>If you have any questions about this Legal Notice, please contact us at: [Insert your contact email or phone number]</p>
+        </section>
+
+        <p class="text-sm text-gray-500 mt-8">Last updated: [Insert date]</p>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>

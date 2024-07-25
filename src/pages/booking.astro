@@ -3,12 +3,23 @@ import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import HeaderPage from "~/components/header-page.astro";
 import BookingForm from "../components/booking-form.astro";
+import ImageCarousel from "../components/ImageCarousel.astro";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
   "Roatan Wonderful Tour is a tour operator company based on the beautiful island of Roatan. We offer a variety of tour packages that allow you to experience the best of what our island has to offer.";
+
+const carouselImages: Array<{ src: string; alt: string }> = [
+  { src: "/sanctuary-1.webp", alt: "santuary in Roatan" },
+  { src: "/sanctuary-2.webp", alt: "santuary in Roatan" },
+  { src: "/coralreef-1.webp", alt: "Restaurant coral reef in Roatan" },
+  { src: "/comida-1.webp", alt: "Restaurant coral reef in Roatan" },
+  { src: "/comida-2.webp", alt: "Restaurant coral reef in Roatan" },
+  { src: "/comida-3.webp", alt: "Restaurant coral reef in Roatan" },
+  // Agrega más imágenes según sea necesario
+];
 ---
 
 <!doctype html>
@@ -59,7 +70,10 @@ const description =
   >
     <HeaderPage />
     <div class="space-y-24 px-8 py-32">
-    <div class="max-w-xl mx-auto">
+      <div class="max-w-4xl mx-auto">
+        <ImageCarousel images={carouselImages} />
+      </div>
+      <div class="max-w-xl mx-auto">
         <BookingForm />
       </div>
     </div>

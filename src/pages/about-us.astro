@@ -1,0 +1,124 @@
+---
+import "@fontsource-variable/inter";
+import Footer from "~/components/footer.astro";
+import HeaderPage from "~/components/header-page.astro";
+import "~/styles/index.css";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Learn about Roatan Wonderful Tour, a legally established tour operator in Honduras, committed to excellence and social responsibility.";
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>About Us - Roatan Wonderful Tour</title>
+    <meta name="description" content={description} />
+
+    <!-- social media -->
+    <meta property="og:title" content="About Us - Roatan Wonderful Tour" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- initialize theme -->
+    <script is:inline>
+      const themeSaved = localStorage.getItem("theme");
+
+      if (themeSaved) {
+        document.documentElement.dataset.theme = themeSaved;
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
+      }
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (!localStorage.getItem("theme")) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+          }
+        });
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <HeaderPage />
+    <div class="space-y-24 px-8 py-32">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-12">About Roatan Wonderful Tour</h1>
+        
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Who We Are</h2>
+          <p class="mb-4">
+            Roatan Wonderful Tour is a premier tour operator based in the beautiful island of Roatan, Honduras. We are passionate about showcasing the natural beauty and rich culture of our island to visitors from around the world.
+          </p>
+          <p class="mb-4">
+            As a legally established company in Honduras, we operate under the name Roatan Wonderful S. de R. L. Our commitment to legal and ethical business practices is reflected in our official registrations:
+          </p>
+          <ul class="list-disc list-inside mb-4">
+            <li>National Tax Registry Number: 11019024047484</li>
+            <li>Registered with the Chamber of Commerce and Industry of the Bay Islands, Registration No. 5527</li>
+          </ul>
+          <p>
+            These credentials underscore our dedication to operating with transparency and in full compliance with local regulations.
+          </p>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Our Values</h2>
+          <p class="mb-4">
+            At Roatan Wonderful Tour, we pride ourselves on upholding high corporate values. Our business is built on the pillars of:
+          </p>
+          <ul class="list-disc list-inside mb-4">
+            <li>Integrity in all our dealings</li>
+            <li>Exceptional customer service</li>
+            <li>Respect for our local environment and culture</li>
+            <li>Commitment to sustainable tourism practices</li>
+            <li>Continuous improvement and innovation</li>
+          </ul>
+          <p>
+            These values guide every aspect of our operations, from the tours we design to the way we interact with our clients and community.
+          </p>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Our Commitment to the Community</h2>
+          <p class="mb-4">
+            We believe in giving back to the community that has given us so much. As part of our social responsibility efforts, we are proud to be a principal sponsor of the Wings of Hope Foundation.
+          </p>
+          <p class="mb-4">
+            Wings of Hope is a local organization dedicated to helping street children in Roatan. Through our sponsorship, we support their mission of providing educational scholarships to children in need, giving them the opportunity to build a brighter future.
+          </p>
+          <p>
+            By choosing Roatan Wonderful Tour, you're not just embarking on an unforgettable adventure – you're also contributing to the betterment of our local community.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold mb-4">Join Us in Exploring Roatan</h2>
+          <p class="mb-4">
+            Whether you're looking to relax on our pristine beaches, explore the vibrant underwater world, or immerse yourself in local culture, Roatan Wonderful Tour is here to make your island experience truly wonderful.
+          </p>
+          <p>
+            We invite you to discover the magic of Roatan with us, and experience firsthand the passion, professionalism, and commitment to excellence that defines Roatan Wonderful Tour.
+          </p>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>
