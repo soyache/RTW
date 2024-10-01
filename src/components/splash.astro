@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Option8Img from "../../src/assets/Opcion8.webp";
 import SplashImgMob from "~/assets/splashMobile.webp";
-import GitHubCorner from "./github-corner.astro";
+import WhatsAppCorner from "./whatsapp-corner.astro";
 
 
 const widths = [450, 800];
@@ -10,7 +10,8 @@ const sizes = "(min-width: 640px) 42vw, 67vw";
 ---
 
 <section class="relative h-full bg-black" style="background-image: url(/playa.webp); background-size: cover;">
-  <!-- <GitHubCorner /> -->
+  <!-- <WhatsAppCorner /> -->
+  <WhatsAppCorner />
   <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
   </div>
   <div id = "imagenSp" class="absolute inset-0 sm:right-0">
